@@ -12,6 +12,10 @@
             font-family: 'gro';
             src: url('GROBOLD.ttf');
         }
+        @font-face {
+            font-family: 'sport';
+            src: url('Sports World-Regular.ttf');
+        }
         body {
             margin: 0; padding: 50px 0;
             display: flex; justify-content: center;
@@ -29,12 +33,13 @@
         }
 
         h1 { font-family: 'Asteroid'; text-align: center; font-size: 2rem; margin-bottom: 30px; }
-        h3 { font-family:'gro'; border-bottom:  1px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-top: 30px; color: #ffde59; }
+        h3 { font-family:'sport'; border-bottom:  1px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-top: 30px; color: #e7ff48; }
 
         .input-group { margin-bottom: 15px; display: flex; flex-direction: column; }
-        label { margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
+        label { font-family:'gro'; margin-bottom:  5px; font-size: 0.9rem; }
         
-        input, select {
+        input, select { 
+            font-family: 'gro';
             padding: 12px; border-radius: 10px; border: none;
             background: rgba(255, 255, 255, 0.2); color: white; outline: none;
         }
@@ -55,30 +60,30 @@
 <div class="glass-form">
     <h1>FORMULIR DATA</h1>
     
-    <form>
-        <h3>1. Data Demografi</h3>
+    <form action="https://script.google.com/macros/s/AKfycbwpjVnY1gv8UYWdVTX-kSVNoU6Eswfpuafc2E-4ufjSyK5NBCxJl7dDBGCoYuDNARvl/exec" method="POST">
+        <h3>1. Data Diri</h3>
         <div class="input-group">
-            <label>Nama Pengguna</label>
-            <input type="text" placeholder="Masukkan nama lengkap">
+            <label>Nama</label>
+            <input type="text" name="nama" placeholder="Masukkan nama lengkap">
         </div>
         <div class="input-group">
             <label>Tanggal Lahir</label>
-            <input type="date"> </div>
+            <input type="date" name="Tanggal_Lahir">  </div>
         <div class="input-group">
             <label>Alamat</label>
-            <input type="text" placeholder="Alamat lengkap">
+            <input type="text" name="Alamat" placeholder="Alamat lengkap">
         </div>
         <div class="input-group">
-            <label>No Telepon</label>
-            <input type="tel" placeholder="08xxxx">
+            <label>No Telp/Whatsapp</label>
+            <input type="tel" name="No_telepon" placeholder="08xxxx">
         </div>
         <div class="input-group">
             <label>Email</label>
-            <input type="email" placeholder="contoh@mail.com">
+            <input type="email" name="Email" placeholder="contoh@mail.com">
         </div>
         <div class="input-group">
             <label>Pendidikan Terakhir</label>
-            <select> <option value="">Pilih Pendidikan</option>
+            <select name="Pendidikan_Terkahir" required> <option value="">Pilih Pendidikan</option>
                 <option>SMA/SMK</option>
                 <option>Diploma (D3)</option>
                 <option>Sarjana (S1)</option>
@@ -89,7 +94,7 @@
         <h3>2. Data Bank</h3>
         <div class="input-group">
             <label>Nama Bank</label>
-            <select>
+            <select name="Nama_Bank" required>
                 <option value="">Pilih Bank</option>
                 <option>Bank Mandiri</option>
                 <option>Bank BCA</option>
@@ -99,39 +104,32 @@
         </div>
         <div class="input-group">
             <label>Nomor Rekening</label>
-            <input type="number" placeholder="Masukkan nomor rekening">
+            <input type="number" name="Nomor_Rekening" placeholder="Masukkan nomor rekening">
         </div>
 
         <h3>3. Data Transaksi Keuangan</h3>
         <div class="input-group">
             <label>Tanggal Transaksi</label>
-            <input type="date">
+            <input type="date" name="Tanggal_Transaksi">
         </div>
         <div class="input-group">
             <label>Uraian Transaksi</label>
-            <input type="text" placeholder="Misal: Bayar Kuliah">
+            <input type="text" name="Uraian_Transaksi" placeholder="Misal: Beli makan">
+        </div>
+         <div class="input-group">
+            <label>Harga/total Harga</label>
+            <input type="text" name="Harga">
         </div>
         <div class="input-group">
             <label>Jenis Transaksi</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
                 <input type="radio" name="jenis" id="debet"> <label for="debet">Debet</label>
                 <input type="radio" name="jenis" id="kredit"> <label for="kredit">Kredit</label>
-            </div>
+            </div> 
         </div>
-
         <button type="submit" class="btn-submit">SIMPAN DATA</button>
     </form>
 </div>
 
-</body>
-</html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
 </body>
 </html>
