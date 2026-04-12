@@ -1,18 +1,68 @@
-<nav>
-    <a href="index.html">Home page</a>
-    <a href="biodata.html">Bio</a>
-    <a href="galery.html">Galery</a>
-    <a href="video.html">Vid</a>
-</nav>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <h1>Photo</h1>
-    <img src="Shincan.jpeg" alt="foto shinchan" width="600">
+    <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+     <style>
+        @font-face { font-family: 'Asteroid'; src: url('Asteroid Blaster.ttf'); }
+        body {
+            margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%; animation: gradient 7s ease infinite; color: rgb(249, 248, 248); font-family: 'asteroid' sans-serif;
+        }
+        @keyframes gradient { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
+        .glass {
+            background: rgba(224, 215, 215, 0.1); backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 50px; text-align: center; border: 1px solid rgba(6, 0, 0, 0.2);
+        }
+        h1 { font-family: 'Asteroid'; font-size: 4rem; text-shadow: 0 0 20px rgba(247, 246, 246, 0.5); margin: 0; }
+        nav { margin-top: 30px; }
+       .nav a { font-family: 'Asteroid', sans-serif;color: rgb(250, 250, 250);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin: 10px;
+            display: inline-block;
+            transition: 0.4s;}
+        .nav a:hover { transform: rotate(10deg) scale(1.3);color: white; }
+        .grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px;}
+    .grid img {width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px;transition: 0.3s; cursor: pointer;}
+    .grid img:hover { transform: scale(1.05); filter: brightness(1.2); }
+    .line-style {
+    border: 0;
+    height: 5px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+    width: 100%; 
+    margin: 20px auto;}
+    </style>
+    <div class="glass" style="width: 80%; max-width: 600px;">
+    <h1 style="font-size: 2rem;">MY GALLERY</h1>
+    <hr class="line-style">
+    <h1 style="font-size: 2rem;">Photo</h1>
+    <div class="grid">
+        <img src="foto 1.jpeg" alt="Foto 1">
+        <img src="foto 2.jpeg" alt="Foto 2">
+        <img src="foto 3.jpeg" alt="Foto 3">
+        <img src="foto 4.jpeg" alt="Foto 4">
+        <img src="foto 5.jpeg" alt="Foto 5">
+        <img src="foto 6.jpeg" alt="Foto 6">
+</div>
+<div>
+    <h1 style="font-size: 2rem;">Video</h1>
+    <video controls style="width: 50%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <source src="Recap2025.mp4" type="video/mp4">
+    </video>
+    <div class="nav">
+            <a href="index.html">HOME</a> |
+            <a href="biodata.html">BIO</a> 
+        </div>
+</div>
 </body>
 </html>

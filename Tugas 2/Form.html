@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas 02 - Penyusunan Formulir</title>
+    <style>
+        @font-face { font-family: 'Asteroid'; src: url('asteroid.ttf'); }
+
+        body {
+            margin: 0; padding: 50px 0;
+            display: flex; justify-content: center;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%; animation: gradient 15s ease infinite;
+            color: white; font-family: 'Segoe UI', sans-serif;
+        }
+
+        @keyframes gradient { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
+
+        .glass-form {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px; padding: 40px; width: 90%; max-width: 600px;
+        }
+
+        h1 { font-family: 'Asteroid'; text-align: center; font-size: 2rem; margin-bottom: 30px; }
+        h3 { border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-top: 30px; color: #ffde59; }
+
+        .input-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+        label { margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
+        
+        input, select {
+            padding: 12px; border-radius: 10px; border: none;
+            background: rgba(255, 255, 255, 0.2); color: white; outline: none;
+        }
+        
+        input::placeholder { color: rgba(255,255,255,0.7); }
+        option { background: #333; color: white; }
+
+        .btn-submit {
+            width: 100%; padding: 15px; margin-top: 30px; border: none;
+            border-radius: 10px; background: #fff; color: #e73c7e;
+            font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .btn-submit:hover { transform: scale(1.02); background: #ffde59; color: #333; }
+    </style>
+</head>
+<body>
+
+<div class="glass-form">
+    <h1>FORMULIR DATA</h1>
+    
+    <form>
+        <h3>1. Data Demografi</h3>
+        <div class="input-group">
+            <label>Nama Pengguna</label>
+            <input type="text" placeholder="Masukkan nama lengkap">
+        </div>
+        <div class="input-group">
+            <label>Tanggal Lahir</label>
+            <input type="date"> </div>
+        <div class="input-group">
+            <label>Alamat</label>
+            <input type="text" placeholder="Alamat lengkap">
+        </div>
+        <div class="input-group">
+            <label>No Telepon</label>
+            <input type="tel" placeholder="08xxxx">
+        </div>
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" placeholder="contoh@mail.com">
+        </div>
+        <div class="input-group">
+            <label>Pendidikan Terakhir</label>
+            <select> <option value="">Pilih Pendidikan</option>
+                <option>SMA/SMK</option>
+                <option>Diploma (D3)</option>
+                <option>Sarjana (S1)</option>
+                <option>Magister (S2)</option>
+            </select>
+        </div>
+
+        <h3>2. Data Bank</h3>
+        <div class="input-group">
+            <label>Nama Bank</label>
+            <select>
+                <option value="">Pilih Bank</option>
+                <option>Bank Mandiri</option>
+                <option>Bank BCA</option>
+                <option>Bank BNI</option>
+                <option>Bank BRI</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Nomor Rekening</label>
+            <input type="number" placeholder="Masukkan nomor rekening">
+        </div>
+
+        <h3>3. Data Transaksi Keuangan</h3>
+        <div class="input-group">
+            <label>Tanggal Transaksi</label>
+            <input type="date">
+        </div>
+        <div class="input-group">
+            <label>Uraian Transaksi</label>
+            <input type="text" placeholder="Misal: Bayar Kuliah">
+        </div>
+        <div class="input-group">
+            <label>Jenis Transaksi</label>
+            <div style="display: flex; gap: 10px; margin-top: 5px;">
+                <input type="radio" name="jenis" id="debet"> <label for="debet">Debet</label>
+                <input type="radio" name="jenis" id="kredit"> <label for="kredit">Kredit</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit">SIMPAN DATA</button>
+    </form>
+</div>
+
+</body>
+</html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>

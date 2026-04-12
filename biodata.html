@@ -1,22 +1,101 @@
-<nav>
-    <a href="index.html">Home page</a>
-    <a href="biodata.html">Bio</a>
-    <a href="galery.html">Galery</a>
-    <a href="video.html">Vid</a>
-</nav>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Biodata - Ahmad Fadhil</title>
+    <style>
+        @font-face {
+            font-family: 'Asteroid';
+            src: url('Asteroid Blaster.ttf');
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 7s ease infinite;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        @keyframes gradient {
+            0% {background-position: 0% 50%}
+            50% {background-position: 100% 50%}
+            100% {background-position: 0% 50%}
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 40px;
+            width: 85%;
+            max-width: 500px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-family: 'Asteroid', sans-serif;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);}
+        table {
+            width: 100%;
+            border-collapse: collapse; 
+        }
+
+        td { font-family: 'Asteroid', sans-serif;padding: 10px 5px; vertical-align: top; font-size: 1.1rem;}
+        .label {font-weight: bold;width: 30%; color: #fbfbfb;}
+        .separator {width: 5%;text-align: center;}
+        .value {width: 65%;}
+        .nav {text-align: center;margin-top: 30px;}
+        .nav a { font-family: 'Asteroid', sans-serif;color: rgb(250, 250, 250);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin: 10px;
+            display: inline-block;
+            transition: 0.4s;}
+        .nav a:hover { transform: rotate(10deg) scale(1.3);color: white; }
+        .line-style {
+    border: 0;
+    height: 5px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+    width: 100%; 
+    margin: 10px auto;}
+    </style>
 </head>
 <body>
-<h1>My bio</h1>
-<table border="1">
-    <tr><td>Nama</td><td>: Ahmad Fadhil Azhim</td></tr>
-    <tr><td>NIM</td><td>: 2310715110010</td></tr>
-    <tr><td>Program studi</td><td>: Sosial Ekonomi Perikanan</td></tr>
-</table>
+    <div class="glass-card">
+        <h1>PROFIL DATA</h1>  
+         <hr class="line-style">
+        <table>
+            <tr>
+                <td class="label">NAMA</td>
+                <td class="separator">:</td>
+                <td class="value">Ahmad Fadhil Azhim</td>
+            </tr>
+            <tr>
+                <td class="label">NIM</td>
+                <td class="separator">:</td>
+                <td class="value">2310715110010</td>
+            </tr>
+            <tr>
+                <td class="label">Program Studi</td>
+                <td class="separator">:</td>
+                <td class="value">Sosial Ekonomi Perikanan</td>
+            </tr>
+        </table>
+
+       <div class="nav">
+            <a href="index.html">HOME</a> |
+            <a href="galery.html">GALERY</a>
+        </div>
+    </div>
+
 </body>
 </html>
