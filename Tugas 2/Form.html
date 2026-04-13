@@ -68,22 +68,21 @@
         </div>
         <div class="input-group">
             <label>Tanggal Lahir</label>
-            <input type="date" name="Tanggal_Lahir">  </div>
         <div class="input-group">
             <label>Alamat</label>
-            <input type="text" name="Alamat" placeholder="Alamat lengkap">
+            <input type="text" name="alamat" placeholder="Alamat lengkap">
         </div>
         <div class="input-group">
             <label>No Telp/Whatsapp</label>
-            <input type="tel" name="No_telepon" placeholder="08xxxx">
+            <input type="tel" name="telepon" placeholder="08xxxx">
         </div>
         <div class="input-group">
             <label>Email</label>
-            <input type="email" name="Email" placeholder="contoh@mail.com">
+            <input type="email" name="email" placeholder="contoh@mail.com">
         </div>
         <div class="input-group">
             <label>Pendidikan Terakhir</label>
-            <select name="Pendidikan_Terkahir" required> <option value="">Pilih Pendidikan</option>
+            <select name="pendidikan" required> <option value="">Pilih Pendidikan</option>
                 <option>SMA/SMK</option>
                 <option>Diploma (D3)</option>
                 <option>Sarjana (S1)</option>
@@ -94,7 +93,7 @@
         <h3>2. Data Bank</h3>
         <div class="input-group">
             <label>Nama Bank</label>
-            <select name="Nama_Bank" required>
+            <select name="bank" required>
                 <option value="">Pilih Bank</option>
                 <option>Bank Mandiri</option>
                 <option>Bank BCA</option>
@@ -104,27 +103,27 @@
         </div>
         <div class="input-group">
             <label>Nomor Rekening</label>
-            <input type="number" name="Nomor_Rekening" placeholder="Masukkan nomor rekening">
+            <input type="number" name="rekening" placeholder="Masukkan nomor rekening">
         </div>
 
         <h3>3. Data Transaksi Keuangan</h3>
         <div class="input-group">
             <label>Tanggal Transaksi</label>
-            <input type="date" name="Tanggal_Transaksi">
+            <input type="date" name="tgl_transaksi">
         </div>
         <div class="input-group">
             <label>Uraian Transaksi</label>
-            <input type="text" name="Uraian_Transaksi" placeholder="Misal: Beli makan">
+            <input type="text" name="uraian" placeholder="Misal: Beli makan">
         </div>
          <div class="input-group">
             <label>Harga/total Harga</label>
-            <input type="text" name="Harga">
+            <input type="text" name="harga">
         </div>
         <div class="input-group">
             <label>Jenis Transaksi</label>
             <div style="display: flex; gap: 10px; margin-top: 5px;">
-                <input type="radio" name="jenis" id="debet"> <label for="debet">Debet</label>
-                <input type="radio" name="jenis" id="kredit"> <label for="kredit">Kredit</label>
+                <input type="radio" name="jenis" id="debet" value="debet"> <label for="debet">Debet</label>
+                <input type="radio" name="jenis" id="kredit" value="kredit"> <label for="kredit">Kredit</label>
             </div> 
         </div>
         <button type="submit" class="btn-submit">SIMPAN DATA</button>
