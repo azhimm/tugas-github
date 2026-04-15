@@ -17,6 +17,30 @@
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%; animation: gradient 7s ease infinite; color: rgb(249, 248, 248); font-family: 'asteroid' sans-serif;
         }
+        @media screen and (max-width: 768px) {
+    .top-nav {
+        right: 0;
+        left: 0;
+        justify-content: center;
+        top: 10px;
+        gap: 20px;
+    }
+    .nav-link {
+        font-size: 0.9rem; 
+    }
+    .glass-card, .glass-form {
+        width: 95%;
+        padding: 20px;
+        margin-top: 80px;
+    }
+    .gallery-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    h1 {
+        font-size: 1.8rem !important;
+    }
+}
         @keyframes gradient { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
         .glass {
             background: rgba(224, 215, 215, 0.1); backdrop-filter: blur(10px);
