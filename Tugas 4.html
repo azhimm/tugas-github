@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Tugas 4</title>
+    <style>
+        @font-face { font-family: 'Asteroid'; src: url('Asteroid Blaster.ttf'); }
+
+        body {
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%; 
+            animation: gradient 7s ease infinite; 
+            color: white; 
+            font-family: 'Asteroid', sans-serif;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradient { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
+
+        
+        .top-nav {
+    position: fixed;  
+    top: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; 
+    padding: 20px 40px;
+    z-index: 9999;      
+    background: rgba(0, 0, 0, 0.1); 
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
+}
+
+.nav-link {
+    font-family: 'Asteroid', sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-left: 25px;
+    transition: 0.3s;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.nav-link:hover {
+    color: #ffde59;
+    transform: scale(1.1);
+    text-shadow: 0 0 15px #ffde59;
+}
+
+
+@media screen and (max-width: 768px) {
+    .top-nav {
+        justify-content: center;
+        padding: 15px;
+    }
+    .nav-link {
+        font-size: 0.8rem;
+        margin: 0 10px;
+    }
+}
+        h1 { 
+            margin-top: 100px; 
+            font-size: 2rem; 
+            text-align: center; 
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        
+        .link-container {
+            margin: 20px 0;
+            z-index: 5;
+        }
+
+        .link-gform {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .link-gform:hover {
+            background: #ffde59;
+            color: black;
+            box-shadow: 0 0 20px #ffde59;
+            transform: translateY(-3px);
+        }
+
+       
+        .dashboard-container {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 10px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        iframe {
+            border-radius: 15px;
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .top-nav { justify-content: center; padding: 15px; }
+            h1 { font-size: 1.5rem; margin-top: 80px; }
+            iframe { height: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">TUGAS 1</a>
+        <a href="Form.html" class="nav-link">TUGAS 2</a>
+        <a href="Tugas 3.html" class="nav-link">TUGAS 3</a>
+        <a href="Tugas 4.html" class="nav-link">TUGAS 4</a>
+    </nav>
+
+    <h1>DASHBOARD TRANSAKSI - TUGAS 04</h1>
+
+    <div class="link-container">
+        <a href="https://forms.gle/BwsWU6U8auavAAMU7" class="link-gform" target="_blank">
+            <span>📝</span> LINK GFORM
+        </a>
+    </div>
+
+    <div class="dashboard-container">
+        <iframe src="https://datastudio.google.com/embed/reporting/b93c7914-adf9-4162-87b4-57c47ccb7f39/page/page_12345" allowfullscreen></iframe>
+    </div>
+
+</body>
+</html>
+ h1 { font-size: 4rem; margin: 0; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+        p { font-size: 1rem; margin-top: 10px; opacity: 0.8; }

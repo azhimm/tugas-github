@@ -4,129 +4,77 @@
     <meta charset="UTF-8">
     <title>Tugas 02 - Penyusunan Formulir</title>
     <style>
-        @font-face {
-            font-family: 'Asteroid';
-            src: url('Asteroid Blaster.ttf');
-        }
-        @font-face {
-            font-family: 'gro';
-            src: url('GROBOLD.ttf');
-        }
-        @font-face {
-            font-family: 'sport';
-            src: url('Sports World-Regular.ttf');
-        }
+        @font-face { font-family: 'Asteroid'; src: url('Asteroid Blaster.ttf'); }
         body {
-            margin: 0; padding: 50px 0;
-            display: flex; justify-content: center;
+            margin: 0; padding: 100px 0 50px 0; display: flex; justify-content: center;
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 400% 400%; animation: gradient 7s ease infinite;
             color: white; font-family: 'Segoe UI', sans-serif;
         }
-       @media screen and (max-width: 768px) {
-    .top-nav {
-        right: 0;
-        left: 0;
-        justify-content: center;
-        top: 10px;
-        gap: 20px;
-    }
-    .nav-link {
-        font-size: 0.9rem; 
-    }
-    .glass-card, .glass-form {
-        width: 95%;
-        padding: 20px;
-        margin-top: 80px;
-    }
-    .gallery-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    h1 {
-        font-size: 1.8rem !important;
-    }
-}
+    
 .top-nav {
-    position: fixed;
-    top: 20px;
-    right: 30px;
+    position: fixed;  
+    top: 0;
+    right: 0;
+    width: 100%;
     display: flex;
-    gap: 40px; 
-    z-index: 1000;
+    justify-content: flex-end; 
+    padding: 20px 40px;
+    z-index: 9999;      
+    background: rgba(0, 0, 0, 0.1); 
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
 }
-
 
 .nav-link {
-    text-decoration: none;
-    color: white;
     font-family: 'Asteroid', sans-serif;
-    font-size: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: 0.4s;
-}
-.nav-link::after {
-    content: '';
-    width: 0;
-    height: 2px;
-    background: #ffde59;
-    transition: 0.4s;
-    margin-top: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-left: 25px;
+    transition: 0.3s;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .nav-link:hover {
-    text-shadow: 0 0 15px #fff, 0 0 25px #ffde59;
-    transform: translateY(-3px);
+    color: #ffde59;
+    transform: scale(1.1);
+    text-shadow: 0 0 15px #ffde59;
 }
 
-.nav-link:hover::after {
-    width: 100%;
+
+@media screen and (max-width: 768px) {
+    .top-nav {
+        justify-content: center;
+        padding: 15px;
+    }
+    .nav-link {
+        font-size: 0.8rem;
+        margin: 0 10px;
+    }
 }
-
-        @keyframes gradient { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
-
         .glass-form {
             background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px; padding: 40px; width: 90%; max-width: 600px;
+            padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 90%; max-width: 600px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-
-        h1 { font-family: 'Asteroid'; text-align: center; font-size: 2rem; margin-bottom: 30px; }
-        h3 { font-family:'sport'; border-bottom:  1px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-top: 30px; color: #e7ff48; }
-
-        .input-group { margin-bottom: 15px; display: flex; flex-direction: column; }
-        label { font-family:'gro'; margin-bottom:  5px; font-size: 0.9rem; }
-        
-        input, select { 
-            font-family: 'gro';
-            padding: 12px; border-radius: 10px; border: none;
-            background: rgba(255, 255, 255, 0.2); color: white; outline: none;
-        }
-        
-        input::placeholder { color: rgba(255,255,255,0.7); }
-        option { background: #333; color: white; }
-
-        .btn-submit {
-            width: 100%; padding: 15px; margin-top: 30px; border: none;
-            border-radius: 10px; background: #fff; color: #e73c7e;
-            font-weight: bold; cursor: pointer; transition: 0.3s;
-        }
-        .btn-submit:hover { transform: scale(1.02); background: #ffde59; color: #333; }
+        h1 { font-family: 'Asteroid'; text-align: center; margin-bottom: 30px; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: none; background: rgba(255,255,255,0.9); color: #333; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; border-radius: 8px; border: none; background: #ffde59; color: black; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 20px; }
+        button:hover { background: white; transform: scale(1.02); }
+        @keyframes gradient { 0% {background-position: 0% 50%} 50% {background-position: 100% 50%} 100% {background-position: 0% 50%} }
     </style>
 </head>
 <body>
- <nav class="top-nav">
-    <a href="index.html" class="nav-link">TUGAS 1</a>
-    
-    <a href="Form.html" class="nav-link">TUGAS 2</a>
-
-    <a href="Tugas 3.html" class="nav-link">TUGAS 3</a>
-</nav>
-    </div>
-</nav>
-<div class="glass-form">
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">TUGAS 1</a>
+        <a href="Form.html" class="nav-link">TUGAS 2</a>
+        <a href="Tugas 3.html" class="nav-link">TUGAS 3</a>
+        <a href="Tugas 4.html" class="nav-link">TUGAS 4</a>
+    </nav>
+    <div class="glass-form">
     <h1>FORMULIR DATA</h1>
     
     <form action="https://script.google.com/macros/s/AKfycbwpjVnY1gv8UYWdVTX-kSVNoU6Eswfpuafc2E-4ufjSyK5NBCxJl7dDBGCoYuDNARvl/exec" method="POST">
@@ -199,6 +147,5 @@
         <button type="submit" class="btn-submit">SIMPAN DATA</button>
     </form>
 </div>
-
 </body>
 </html>
