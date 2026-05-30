@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 5 - Rencana Usaha Bersama KUB</title>
+    <style>
+        @font-face { 
+            font-family: 'Asteroid'; 
+            src: url('Asteroid Blaster.ttf'); 
+        }
+        
+        body {
+            margin: 0; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%; 
+            animation: gradient 7s ease infinite; 
+            color: white; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradient { 
+            0% {background-position: 0% 50%} 
+            50% {background-position: 100% 50%} 
+            100% {background-position: 0% 50%} 
+        }
+        
+        /* NAVIGASI: Konsisten & Fix di Pojok Kanan Atas */
+        .top-nav { 
+            position: fixed; 
+            top: 0; 
+            right: 0;
+            width: 100%; 
+            display: flex; 
+            justify-content: flex-end; 
+            padding: 25px 40px; 
+            z-index: 9999;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link { 
+            text-decoration: none; 
+            color: white; 
+            margin-left: 20px; 
+            transition: 0.4s; 
+            font-family: 'Asteroid', sans-serif;
+            font-size: 0.9rem; 
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover, .nav-link.active { 
+            color: #ffde59; 
+            text-shadow: 0 0 15px #ffde59; 
+            transform: scale(1.1); 
+        }
+
+        /* CONTAINER UTAMA (GLASSMORPHISM) */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(15px);
+            border-radius: 20px; 
+            padding: 45px 50px; 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
+            max-width: 1100px;
+            width: 90%;
+            margin-top: 130px; 
+            margin-bottom: 60px;
+            box-sizing: border-box;
+        }
+
+        h1 { 
+            font-family: 'Asteroid', sans-serif;
+            font-size: 2.2rem; 
+            text-align: center; 
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            font-style: italic;
+            border-bottom: 2px dashed rgba(255, 255, 255, 0.2);
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Asteroid', sans-serif;
+            font-size: 1.3rem;
+            color: #ffde59;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ffde59;
+            padding-left: 12px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: justify;
+            opacity: 0.95;
+        }
+
+        ul, ol {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* STYLING TABEL KUB */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.25);
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: rgba(255, 222, 89, 0.2);
+            color: #ffde59;
+            font-weight: bold;
+            text-align: left;
+            padding: 14px 16px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+            line-height: 1.5;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: rgba(255, 222, 89, 0.1);
+            border: 1px solid rgba(255, 222, 89, 0.3);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: #ffde59;
+            font-size: 1.15rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media screen and (max-width: 768px) {
+            .top-nav { 
+                justify-content: center; 
+                padding: 15px; 
+            }
+            .nav-link { 
+                margin: 0 8px; 
+                font-size: 0.75rem; 
+            }
+            .glass-container {
+                padding: 25px 20px;
+                margin-top: 100px;
+            }
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.1rem; }
+            p, li { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">TUGAS 1</a>
+        <a href="Form.html" class="nav-link">TUGAS 2</a>
+        <a href="Tugas 3.html" class="nav-link">TUGAS 3</a>
+        <a href="Tugas 4.html" class="nav-link">TUGAS 4</a>
+        <a href="Tugas 5.html" class="nav-link active">TUGAS 5</a>
+        <a href="Tugas Mandiri.html" class="nav-link">TUGAS 5 Mandiri</a>
+    </nav>
+
+    <div class="glass-container">
+        <h1>RENCANA USAHA BERSAMA (KUB)</h1>
+        <div class="subtitle">Analisis Strategis & Integrasi Data Berdasarkan 4 Jurnal Kelompok Usaha Bersama Perikanan</div>
+
+        <h2>1. PENDAHULUAN & LATAR BELAKANG</h2>
+        <p>
+            Kelompok Usaha Bersama (KUB) nelayan merupakan tiang utama dalam peningkatan kesejahteraan masyarakat pesisir di Indonesia. Berdasarkan sintesis mendalam terhadap empat dokumen profil dan kinerja KUB yang tersebar di wilayah Indonesia (Lombok Timur, Bangkalan, Aceh, dan Konawe), disusun sebuah <strong>Rencana Usaha Bersama Integratif</strong>. Rencana ini bertujuan untuk memitigasi kendala klasik nelayan tradisional seperti keterbatasan armada, manajemen administrasi yang lemah, serta rendahnya akses permodalan, dengan memanfaatkan keunggulan tata kelola modern yang berkelanjutan.
+        </p>
+
+        <h2>2. METRIK DAN KARAKTERISTIK 4 KUB REFERENSI</h2>
+        <p>
+            Untuk memetakan potensi usaha, berikut adalah ringkasan parameter kunci yang diekstraksi dari data riil keempat kelompok nelayan:
+        </p>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama KUB / Lokasi</th>
+                        <th>Karakteristik & Alat Tangkap</th>
+                        <th>Aspek Finansial & Omset</th>
+                        <th>Fokus Pembenahan Utama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>KUB Pasir Putih</strong><br>Desa Ekas Buana, Lombok Timur</td>
+                        <td>Gabungan Kelompok Tani-Nelayan tradisional. Struktur organisasi lengkap namun operasional masih manual.</td>
+                        <td>Pendapatan musiman; pengelolaan kas kelompok belum teratur secara komersial.</td>
+                        <td>Penyediaan kelengkapan administrasi (Buku Tamu, Kas, Anggota, dan Notulensi Rapat) sebagai fondasi hukum usaha.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>KUB Sumber Makmur</strong><br>Desa Klampis Timur, Bangkalan</td>
+                        <td>Nelayan pesisir tangkap. Menggunakan armada perahu dengan alat tangkap Jaring Payang dan Mesin Motor Tempel.</td>
+                        <td>Omset per anggota rata-rata Rp 12.000.000 per tahun. Total aset kelompok mencapai Rp 32 Juta - Rp 48 Juta.</td>
+                        <td>Peremajaan mesin motor tempel, optimalisasi kapasitas muat armada, dan pembagian dividen berkala.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>KUB Nelayan Gillnet</strong><br>Barsela, Provinsi Aceh</td>
+                        <td>KUB berskala semi-modern dengan fokus alat tangkap Jaring Insang (Gillnet). Mengandalkan program pemberdayaan pedesaan.</td>
+                        <td>Ketergantungan tinggi pada bantuan modal kebijakan pemerintah daerah/pusat untuk investasi armada besar.</td>
+                        <td>Peningkatan 5 dimensi kinerja: Kelembagaan, Sosial-Budaya, Ekonomi, Lingkungan, dan Kebijakan Regulasi.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>KUB Usaha Nelayan</strong><br>Desa Watusa, Puriala, Konawe</td>
+                        <td>KUB Kelas Pemula dengan produktivitas tinggi. Fokus pada penangkapan wilayah perairan darat/pesisir terpadu.</td>
+                        <td>Omset per anggota sangat kompetitif, berkisar antara Rp 29.400.000 hingga Rp 45.360.000 per tahun.</td>
+                        <td>Standardisasi mutu tangkapan, peningkatan kelas kelompok dari Pemula menjadi Madya/Utama, dan perluasan pasar.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>3. CETAK BIRU (BLUEPRINT) RENCANA USAHA BERSAMA</h2>
+        <p>
+            Menggabungkan kelebihan data di atas, Rencana Usaha KUB masa depan bertumpu pada tiga pilar operasional:
+        </p>
+        
+        <h3>A. Standardisasi Tata Kelola Administrasi (Adopsi KUB Pasir Putih)</h3>
+        <p>
+            Seringkali KUB gagal mendapatkan bantuan perbankan (KUR) karena administrasi yang berantakan. Rencana usaha wajib memberlakukan sistem pencatatan digital harian yang mencakup logbook penangkapan, buku arus kas logistik, serta sistem notulensi rapat berkala untuk menjaga transparansi pembagian keuntungan.
+        </p>
+
+        <h3>B. Diversifikasi & Modernisasi Alat Tangkap (Adopsi KUB Bangkalan & Aceh)</h3>
+        <ul>
+            <li><strong>Investasi Mesin Tempel:</strong> Mengganti mesin tua dengan mesin berbahan bakar efisien (seperti yang diterapkan di KUB Bangkalan dengan alokasi modal bersama).</li>
+            <li><strong>Selektivitas Tangkapan:</strong> Menerapkan regulasi ukuran mata jaring Gillnet (dari studi KUB Aceh) untuk menjaga ekosistem perairan agar bisnis berjalan dalam jangka panjang.</li>
+        </ul>
+
+        <h3>C. Optimalisasi Nilai Jual & Target Pasar (Adopsi KUB Konawe)</h3>
+        <p>
+            Dengan replikasi manajemen KUB Konawe yang menghasilkan omset hingga Rp 45 Juta/tahun per anggota, rencana usaha ini memproyeksikan pembentukan unit pengolahan pasca-panen (pendinginan rantai dingin/cold chain) agar nelayan tidak terikat oleh tengkulak lokal dan dapat menjual langsung ke industri skala besar.
+        </p>
+
+        <div class="highlight-box">
+            <h3>📈 Proyeksi Target & Skala Usaha Kombinasi</h3>
+            <p>
+                Target utama implementasi Rencana Usaha Bersama ini adalah menaikkan pendapatan minimum nelayan anggota dari standar Rp 12.000.000/tahun (Bangkalan) menuju standar optimal Rp 45.000.000/tahun (Konawe) dalam waktu 24 bulan, melalui modernisasi armada terpusat yang dikelola secara kelembagaan kuat seperti model KUB Aceh.
+            </p>
+        </div>
+
+        <h2>4. KESIMPULAN</h2>
+        <p>
+            Integrasi dari ke-4 dokumen KUB memberikan kesimpulan berharga bahwa keberhasilan rencana usaha bersama tidak hanya ditentukan oleh melimpahnya hasil tangkapan di laut, melainkan kombinasi harmonis antara manajemen administrasi yang tertib, modernisasi alat produksi yang efisien, kepatuhan lingkungan, serta kekompakan kelembagaan kelompok.
+        </p>
+    </div>
+
+</body>
+</html>
