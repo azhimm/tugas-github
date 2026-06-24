@@ -3,474 +3,456 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard KUB Usaha - Portal Resmi</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>Portal Sistem Informasi KUB</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
     <style>
-        /* Efek Glassmorphism untuk Konten Jurnal KUB */
-.glass-container {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 12px;
-    padding: 35px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-    margin-bottom: 30px;
-}
-.glass-container h1 {
-    font-size: 1.85rem;
-    color: #0d233a;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 5px;
-}
-.glass-container h2 {
-    font-size: 1.35rem;
-    color: #1e40af;
-    font-weight: 600;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-left: 4px solid #1e40af;
-    padding-left: 10px;
-}
-.glass-container h3 {
-    font-size: 1.1rem;
-    color: #334155;
-    font-weight: 600;
-    margin-top: 20px;
-}
-.glass-container p, .glass-container li {
-    color: #475569;
-    line-height: 1.7;
-    font-size: 0.98rem;
-}
-/* Styling Tabel Data Jurnal */
-.glass-container table {
-    width: 100%;
-    margin: 20px 0;
-    border-collapse: collapse;
-    background: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-}
-.glass-container th {
-    background-color: #0d233a;
-    color: #ffffff;
-    padding: 12px 15px;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.glass-container td {
-    padding: 14px 15px;
-    border-bottom: 1px solid #e2e8f0;
-    font-size: 0.93rem;
-    vertical-align: top;
-}
-.glass-container tr:hover {
-    background-color: #f8fafc;
-}
-/* Kotak Proyeksi Target */
-.highlight-box {
-    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-    border-left: 5px solid #0284c7;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 25px 0;
-}
-.highlight-box h3 {
-    margin-top: 0;
-    color: #0369a1;
-}
+        :root {
+            --bg-main: #f3f4f6;
+            --sidebar-bg: #1e293b;
+            --sidebar-hover-bg: #334155;
+            --accent-color: #0d9488;
+            --accent-hover: #14b8a6;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: #1f2937;
+            overflow-x: hidden;
+            margin: 0;
         }
-        /* Navbar Atas */
-        .navbar-gov {
-            background-color: #0d233a; /* Biru Tua Formal Pemerintah */
-            color: white;
-        }
-        /* Sidebar Styling */
+
+        /* ==========================================================================
+           ANIMASI & STYLING SIDEBAR (HOVER TO EXPAND)
+           ========================================================================== */
         .sidebar {
             position: fixed;
-            top: 56px;
+            top: 0;
             bottom: 0;
             left: 0;
-            z-index: 100;
-            padding: 20px 0 0;
-            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-            background-color: #ffffff;
-            width: 260px;
+            z-index: 1000;
+            background-color: var(--sidebar-bg);
+            width: 70px; /* Lebar awal sebelum hover (hanya ikon) */
+            overflow-x: hidden;
             overflow-y: auto;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+            /* Transisi animasi pelebaran sidebar */
+            transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* Trigger ketika kursor diarahkan ke area sidebar */
+        .sidebar:hover {
+            width: 280px; 
+        }
+        
+        .sidebar-brand {
+            padding: 20px;
+            background-color: #0f172a;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .sidebar-brand i {
+            font-size: 1.5rem;
+            color: var(--accent-hover);
+            min-width: 35px;
+        }
+
+        /* Animasi teks menu memudar muncul */
+        .sidebar .menu-text {
+            opacity: 0;
+            visibility: hidden;
+            white-space: nowrap;
+            margin-left: 12px;
+            transition: opacity 0.2s ease, visibility 0.2s;
+        }
+
+        .sidebar:hover .menu-text {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0.1s;
+        }
+
+        .sidebar .nav {
+            padding: 15px 0;
+        }
+
         .sidebar .nav-link {
             font-weight: 500;
-            color: #333;
-            padding: 10px 20px;
-            font-size: 0.95rem;
+            color: var(--text-muted);
+            padding: 12px 18px;
+            margin: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.25s ease;
         }
+
+        .sidebar .nav-link i {
+            font-size: 1.25rem;
+            min-width: 35px;
+            text-align: center;
+            transition: transform 0.25s ease;
+        }
+
+        /* Animasi mikro saat item menu disorot */
         .sidebar .nav-link:hover {
-            background-color: #f0f4f8;
-            color: #0d233a;
+            color: #ffffff;
+            background-color: var(--sidebar-hover-bg);
         }
+        
+        .sidebar .nav-link:hover i {
+            transform: scale(1.15); /* Ikon membesar sedikit */
+            color: var(--accent-hover);
+        }
+
         .sidebar .nav-link.active {
-            color: #fff;
-            background-color: #1e40af; /* Biru Kominfo/Pemerintah */
+            color: #ffffff;
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
         }
+
         .sidebar-heading {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             font-weight: 700;
-            color: #6c757d;
-            padding: 15px 20px 5px;
-            letter-spacing: 0.5px;
+            color: #475569;
+            padding: 15px 20px 5px 20px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
         }
-        /* Konten Utama */
+
+        .sidebar-heading i {
+            font-size: 0.8rem;
+            min-width: 35px;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           STYLING AREA MAIN KONTEN (IKUT BERGESER HALUS)
+           ========================================================================== */
         .main-content {
-            margin-left: 260px;
-            padding: 40px 30px;
-            margin-top: 56px;
+            margin-left: 70px;
+            padding: 30px;
+            /* Transisi pergeseran margin seirama dengan gerak sidebar */
+            transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .card-gov {
+
+        /* Efek interaktif: mendorong konten ke kanan secara halus saat sidebar membesar */
+        .sidebar:hover ~ .main-content {
+            margin-left: 280px;
+        }
+
+        .top-banner {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 24px 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01), 0 2px 4px -1px rgba(0,0,0,0.01);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .top-banner h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+
+        .top-banner p {
+            color: #64748b;
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        .badge-info-box {
+            background-color: #f8fafc;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Tombol Kembali ke Beranda */
+        .btn-back-home {
+            background-color: var(--sidebar-bg);
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-back-home:hover {
+            background-color: var(--accent-hover);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .card-custom {
+            background: #ffffff;
             border: none;
-            border-top: 4px solid #1e40af;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-        }
-        .embed-container {
-            position: relative;
-            width: 100%;
-            background: #fff;
-            border-radius: 8px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.02);
+            margin-bottom: 25px;
             overflow: hidden;
         }
-        /* Penyesuaian Responsif */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                position: static;
-                height: auto;
-            }
-            .main-content {
-                margin-left: 0;
-            }
+
+        .card-custom .card-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f1f5f9;
+            padding: 20px 25px;
+        }
+
+        .card-custom .card-header h5 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-custom .card-body {
+            padding: 25px;
+        }
+
+        .embed-iframe-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            width: 100%;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        /* Manajemen Tampilan Konten */
+        .content-section {
+            display: none;
+        }
+        .content-section.active-section {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR ATAS -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-gov fixed-top shadow">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <i class="bi bi-shield-check me-2 fs-4 text-warning"></i>
-                <strong>PORTAL Rencana Usaha Bersama</strong>
-            </a>
-            <span class="navbar-text text-white-50 d-none d-md-block">
-                Sistem Informasi dan Evaluasi Data 
-            </span>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="bi bi-grid-fill"></i>
+            <span class="menu-text">Portal RUB</span>
         </div>
+        
+        <ul class="nav flex-column">
+            <div class="sidebar-heading" style="padding-top: 10px;">
+                <i class="bi bi-chevron-right"></i>
+                <span class="menu-text">Rencana Usaha (RUB)</span>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link active" href="#" data-section="kuesioner-rub-sec">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span class="menu-text">Kuesioner RUB</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-section="spreadsheet-rub-sec">
+                    <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                    <span class="menu-text">Spreadsheet Data RUB</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-section="looker-rub-sec">
+                    <i class="bi bi-bar-chart-line-fill"></i>
+                    <span class="menu-text">Looker Studio RUB</span>
+                </a>
+            </li>
+
+            <div class="sidebar-heading">
+                <i class="bi bi-chevron-right"></i>
+                <span class="menu-text">Tingkat Kepuasan</span>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-section="kuesioner-kepuasan-sec">
+                    <i class="bi bi-emoji-smile-fill"></i>
+                    <span class="menu-text">Kuesioner Kepuasan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-section="spreadsheet-kepuasan-sec">
+                    <i class="bi bi-table"></i>
+                    <span class="menu-text">Spreadsheet Kepuasan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-section="looker-kepuasan-sec">
+                    <i class="bi bi-pie-chart-fill"></i>
+                    <span class="menu-text">Looker Studio Kepuasan</span>
+                </a>
+            </li>
+        </ul>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            
-            <!-- SIDEBAR NAVIGASI -->
-            <nav class="sidebar col-md-3 col-lg-2 d-md-block collapse">
-                <div class="position-sticky pt-2">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#latar-belakang">
-                                <i class="bi bi-info-circle me-2"></i> Latar Belakang Rencana Usaha Bersama
-                            </a>
-                        </li>
-                        
-                        <!-- Kategori 1: Rencana Usaha Bersama -->
-                        <h6 class="sidebar-heading">Rencana Usaha Bersama</h6>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#kuesioner-rub">
-                                <i class="bi bi-file-earmark-text me-2"></i> Kuesioner
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#spreadsheet-rub">
-                                <i class="bi bi-table me-2"></i> Spreadsheet Data
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#datastudio-rub">
-                                <i class="bi bi-bar-chart-line me-2"></i> Looker Studio
-                            </a>
-                        </li>
-
-                        <!-- Kategori 2: Tingkat Kepuasan -->
-                        <h6 class="sidebar-heading">Tingkat Kepuasan</h6>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#kuesioner-kepuasan">
-                                <i class="bi bi-file-earmark-text me-2"></i> Kuesioner Tingkat Kepuasan
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#spreadsheet-kepuasan">
-                                <i class="bi bi-table me-2"></i> Spreadsheet Tingkat Kepuasan
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#datastudio-kepuasan">
-                                <i class="bi bi-bar-chart-line me-2"></i> Looker Studio Tingkat Kepuasan
-                            </a>
-                        </li>
-                    </ul>
-                    <hr class="mx-3">
-                    <div class="px-3 text-muted small">
-            
-                    </div>
-                </div>
-            </nav>
-
-            <!-- KONTEN UTAMA -->
-            <main class="main-content col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
-                    <h1 class="h2 text-dark">Dashboard Monitoring Kelompok Usaha Bersama (KUB)</h1>
-                </div>
-
-                <!-- ==================== 0. LATAR BELAKANG ==================== -->
-               <!-- 0. HALAMAN LATAR BELAKANG (DENGAN ANALISIS 4 JURNAL) -->
-<section id="latar-belakang" class="mb-5">
-    <div class="card card-gov">
-        <div class="card-header bg-white py-3">
-            <h5 class="mb-0 text-primary"><i class="bi bi-info-circle-fill me-2"></i>Latar Belakang</h5>
-        </div>
-        <div class="card-body bg-light p-4">
-            
-            <!-- MASUKKAN KONTEN GLASS CONTAINER ANDA DI SINI -->
-            <div class="glass-container">
-                <h1>RENCANA USAHA BERSAMA (KUB)</h1>
-                <div class="subtitle text-muted mb-4">Analisis Strategis & Integrasi Data Berdasarkan 4 Jurnal Kelompok Usaha Bersama Perikanan</div>
-
-                <h2>1. PENDAHULUAN & LATAR BELAKANG</h2>
-                <p>
-                    Kelompok Usaha Bersama (KUB) nelayan merupakan tiang utama dalam peningkatan kesejahteraan masyarakat pesisir di Indonesia. Berdasarkan sintesis mendalam terhadap empat dokumen profil dan kinerja KUB yang tersebar di wilayah Indonesia (Lombok Timur, Bangkalan, Aceh, dan Konawe), disusun sebuah <strong>Rencana Usaha Bersama Integratif</strong>. Rencana ini bertujuan untuk memitigasi kendala klasik nelayan tradisional seperti keterbatasan armada, manajemen administrasi yang lemah, serta rendahnya akses permodalan, dengan memanfaatkan keunggulan tata kelola modern yang berkelanjutan.
-                </p>
-
-                <h2>2. METRIK DAN KARAKTERISTIK 4 KUB REFERENSI</h2>
-                <p>
-                    Untuk memetakan potensi usaha, berikut adalah ringkasan parameter kunci yang diekstraksi dari data riil keempat kelompok nelayan:
-                </p>
-
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nama KUB / Lokasi</th>
-                                <th>Karakteristik & Alat Tangkap</th>
-                                <th>Aspek Finansial & Omset</th>
-                                <th>Fokus Pembenahan Utama</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>KUB Pasir Putih</strong><br><small class="text-muted">Desa Ekas Buana, Lombok Timur</small></td>
-                                <td>Gabungan Kelompok Tani-Nelayan tradisional. Struktur organisasi lengkap namun operasional masih manual.</td>
-                                <td>Pendapatan musiman; pengelolaan kas kelompok belum teratur secara komersial.</td>
-                                <td>Penyediaan kelengkapan administrasi (Buku Tamu, Kas, Anggota, dan Notulensi Rapat) sebagai fondasi hukum usaha.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>KUB Sumber Makmur</strong><br><small class="text-muted">Desa Klampis Timur, Bangkalan</small></td>
-                                <td>Nelayan pesisir tangkap. Menggunakan armada perahu dengan alat tangkap Jaring Payang dan Mesin Motor Tempel.</td>
-                                <td>Omset per anggota rata-rata Rp 12.000.000 per tahun. Total aset kelompok mencapai Rp 32 Juta - Rp 48 Juta.</td>
-                                <td>Peremajaan mesin motor tempel, optimalisasi kapasitas muat armada, dan pembagian dividen berkala.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>KUB Nelayan Gillnet</strong><br><small class="text-muted">Barsela, Provinsi Aceh</small></td>
-                                <td>KUB berskala semi-modern dengan fokus alat tangkap Jaring Insang (Gillnet). Mengandalkan program pemberdayaan pedesaan.</td>
-                                <td>Ketergantungan tinggi pada bantuan modal kebijakan pemerintah daerah/pusat untuk investasi armada besar.</td>
-                                <td>Peningkatan 5 dimensi kinerja: Kelembagaan, Sosial-Budaya, Ekonomi, Lingkungan, dan Kebijakan Regulasi.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>KUB Usaha Nelayan</strong><br><small class="text-muted">Desa Watusa, Puriala, Konawe</small></td>
-                                <td>KUB Kelas Pemula dengan produktivitas tinggi. Fokus pada penangkapan wilayah perairan darat/pesisir terpadu.</td>
-                                <td>Omset per anggota sangat kompetitif, berkisar antara Rp 29.400.000 hingga Rp 45.360.000 per tahun.</td>
-                                <td>Standardisasi mutu tangkapan, peningkatan kelas kelompok dari Pemula menjadi Madya/Utama, dan perluasan pasar.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h2>3. CETAK BIRU (BLUEPRINT) RENCANA USAHA BERSAMA</h2>
-                <p>
-                    Menggabungkan kelebihan data di atas, Rencana Usaha KUB masa depan bertumpu pada tiga pilar operasional:
-                </p>
-                
-                <h3>A. Standardisasi Tata Kelola Administrasi (Adopsi KUB Pasir Putih)</h3>
-                <p>
-                    Seringkali KUB gagal mendapatkan bantuan perbankan (KUR) karena administrasi yang berantakan. Rencana usaha wajib memberlakukan sistem pencatatan digital harian yang mencakup logbook penangkapan, buku arus kas logistik, serta sistem notulensi rapat berkala untuk menjaga transparansi pembagian keuntungan.
-                </p>
-
-                <h3>B. Diversifikasi & Modernisasi Alat Tangkap (Adopsi KUB Bangkalan & Aceh)</h3>
-                <ul>
-                    <li><strong>Investasi Mesin Tempel:</strong> Mengganti mesin tua dengan mesin berbahan bakar efisien (seperti yang diterapkan di KUB Bangkalan dengan alokasi modal bersama).</li>
-                    <li><strong>Selektivitas Tangkapan:</strong> Menerapkan regulasi ukuran mata jaring Gillnet (dari studi KUB Aceh) untuk menjaga ekosistem perairan agar bisnis berjalan dalam jangka panjang.</li>
-                </ul>
-
-                <h3>C. Optimalisasi Nilai Jual & Target Pasar (Adopsi KUB Konawe)</h3>
-                <p>
-                    Dengan replikasi manajemen KUB Konawe yang menghasilkan omset hingga Rp 45 Juta/tahun per anggota, rencana usaha ini memproyeksikan pembentukan unit pengolahan pasca-panen (pendinginan rantai dingin/cold chain) agar nelayan tidak terikat oleh tengkulak lokal dan dapat menjual langsung ke industri skala besar.
-                </p>
-
-                <div class="highlight-box">
-                    <h3>📈 Proyeksi Target & Skala Usaha Kombinasi</h3>
-                    <p>
-                        Target utama implementasi Rencana Usaha Bersama ini adalah menaikkan pendapatan minimum nelayan anggota dari standar Rp 12.000.000/tahun (Bangkalan) menuju standar optimal Rp 45.000.000/tahun (Konawe) dalam waktu 24 bulan, melalui modernisasi armada terpusat yang dikelola secara kelembagaan kuat seperti model KUB Aceh.
-                    </p>
-                </div>
-
-                <h2>4. KESIMPULAN</h2>
-                <p>
-                    Integrasi dari ke-4 dokumen KUB memberikan kesimpulan berharga bahwa keberhasilan rencana usaha bersama tidak hanya ditentukan oleh melimpahnya hasil tangkapan di laut, melainkan kombinasi harmonis antara manajemen administrasi yang tertib, modernisasi alat produksi yang efisien, kepatuhan lingkungan, serta kekompakan kelembagaan kelompok.
-                </p>
+    <main class="main-content">
+        
+        <div class="top-banner">
+            <div>
+                <h1>Portal Sistem Informasi KUB</h1>
+                <p>Dashboard terintegrasi data kuesioner, tabulasi data, serta grafik laporan analitis.</p>
             </div>
-            <!-- SELESAI GLASS CONTAINER -->
-
+            <div class="d-flex gap-2 align-items-center flex-wrap">
+                <div class="badge-info-box"><i class="bi bi-safe2 text-teal" style="color: #0d9488;"></i> Database Terpusat</div>
+                <div class="badge-info-box"><i class="bi bi-patch-check-fill text-success"></i> Realtime Sync</div>
+                <a href="index.html" class="btn-back-home">
+                    <i class="bi bi-house-door-fill"></i> Beranda
+                </a>
+            </div>
         </div>
-    </div>
-</section>
 
-
-                <!-- ==================== BAGIAN: RENCANA USAHA BERSAMA (RUB) ==================== -->
-                <div class="alert alert-primary d-flex align-items-center" role="alert">
-                    <i class="bi bi-folder-fill me-2 fs-5"></i>
-                    <div><strong>KLUSTER DATA:</strong> RENCANA USAHA BERSAMA (RUB)</div>
+        <section id="kuesioner-rub-sec" class="content-section active-section">
+            <div class="card-custom">
+                <div class="card-header">
+                    <h5><i class="bi bi-file-earmark-text text-primary"></i> Form Input Kuesioner Rencana Usaha Bersama</h5>
                 </div>
-
-                <!-- 1. Kuesioner RUB -->
-                <section id="kuesioner-rub" class="mb-5">
-                    <div class="card card-gov">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0 text-dark"><i class="bi bi-file-earmark-text-fill me-2 text-primary"></i> 1. Kuesioner Rencana Usaha Bersama</h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="embed-container">
-                                <!-- ISI LINK GOOGLE FORM KUESIONER RUB DI SINI -->
-                                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeBggyT9pfH1WQcfM8lbKVpq42dwad4m5bGoD5HYwpXV0UqWg/viewform?usp=header" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-                            </div>
-                        </div>
+                <div class="card-body">
+                    <div class="embed-iframe-box">
+                        <iframe src="https://forms.gle/ag3wH2whvi2oUe7K9" width="100%" height="560" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
                     </div>
-                </section>
-
-                <!-- 2. Spreadsheet RUB -->
-                <section id="spreadsheet-rub" class="mb-5">
-                    <div class="card card-gov">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0 text-dark"><i class="bi bi-table me-2 text-primary"></i> 2. Data Spreadsheet Rencana Usaha Bersama</h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="embed-container">
-                                <!-- ISI LINK GOOGLE SHEETS RUB DI SINI -->
-                                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTGnNGAJnUdvRTO03lfyqXvzkORWJnIf5uRsiRORY-RviIk_HqffEEHJQE3tizUw1Q7iIw8sqPCCTM7/pubhtml" width="100%" height="500" frameborder="0"></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 3. Looker Studio RUB -->
-                <section id="datastudio-rub" class="mb-5">
-                    <div class="card card-gov">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0 text-dark"><i class="bi bi-bar-chart-line-fill me-2 text-primary"></i> 3. Visualisasi Looker Studio Rencana Usaha Bersama</h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="embed-container">
-                                <!-- ISI LINK EMBED LOOKER STUDIO RUB DI SINI -->
-                                <iframe src="https://datastudio.google.com/embed/reporting/5451edc9-86dd-41f1-9926-5570b459e1a0/page/page_12345" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-
-                <!-- ==================== BAGIAN: TINGKAT KEPUASAN ==================== -->
-                <div class="alert alert-success d-flex align-items-center" role="alert">
-                    <i class="bi bi-folder-fill me-2 fs-5"></i>
-                    <div><strong>KLUSTER DATA:</strong> TINGKAT KEPUASAN ANGGOTA KUB</div>
                 </div>
+            </div>
+        </section>
 
-                <!-- 1. Kuesioner Kepuasan -->
-                <section id="kuesioner-kepuasan" class="mb-5">
-                    <div class="card card-gov">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0 text-dark"><i class="bi bi-file-earmark-text-fill me-2 text-success"></i> 1. Kuesioner Tingkat Kepuasan</h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="embed-container">
-                                <!-- ISI LINK GOOGLE FORM KUESIONER KEPUASAN DI SINI -->
-                                <iframe src="https://forms.gle/MWJu64ncwsS5YzBT7" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-                            </div>
+        <section id="spreadsheet-rub-sec" class="content-section">
+            <div class="card-custom">
+                <div class="card-header">
+                    <h5><i class="bi bi-file-earmark-spreadsheet-fill text-success"></i> Rekap Data Spreadsheet Master RUB</h5>
+                </div>
+                <div class="card-body">
+                    <div class="embed-iframe-box">
+                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVTJWWc0zmcXKWIHX0HItb1CYq9LHxASwzhdfb61EojP8zOLpWQJQcmyXPp4CExKDinjroPM_ohHPX/pubhtml" width="100%" height="500" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="looker-rub-sec" class="content-section">
+            <div class="card-custom">
+                <div class="card-header">
+                    <h5><i class="bi bi-bar-chart-line-fill text-warning"></i> Visualisasi Grafik Laporan Looker Studio RUB</h5>
+                </div>
+                <div class="card-body">
+                    <div class="embed-iframe-box">
+                        <iframe src="https://datastudio.google.com/embed/reporting/e0004be9-e3a9-4a3a-8d8a-1d6aa5984243/page/page_12345" width="100%" height="560" frameborder="0" style="border:0" allowfullscreen  allow="local-network-access" 
+        allowfullscreen>></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kuesioner-kepuasan-sec" class="content-section">
+            <div class="card-custom">
+                <div class="card-header">
+                    <h5><i class="bi bi-emoji-smile-fill text-primary"></i> Form Evaluasi Tingkat Kepuasan Anggota</h5>
+                </div>
+                <div class="card-body">
+                    <div class="embed-iframe-box">
+                        <iframe src="https://forms.gle/MWJu64ncwsS5YzBT7" width="100%" height="560" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="spreadsheet-kepuasan-sec" class="content-section">
+            <div class="card-custom">
+                <div class="card-header">
+                    <h5><i class="bi bi-table text-success"></i> Tabulasi Respon Data Tingkat Kepuasan</h5>
+                </div>
+                <div class="card-body">
+                    <div class="embed-iframe-box">
+                        <div class="p-5 text-center text-muted bg-light border rounded">
+                            <i class="bi bi-lock-fill display-6 d-block mb-3"></i>
+                            <p class="mb-0 fw-medium">Tautan database spreadsheet tingkat kepuasan dienkripsi untuk akses administrator kelompok.</p>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
+        </section>
 
-                <!-- 2. Spreadsheet Kepuasan -->
-                <section id="spreadsheet-kepuasan" class="mb-5">
-                    <div class="card card-gov">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0 text-dark"><i class="bi bi-table me-2 text-success"></i> 2. Data Spreadsheet Tingkat Kepuasan</h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="embed-container">
-                                <!-- ISI LINK GOOGLE SHEETS KEPUASAN DI SINI -->
-                                <iframe src="https://docs.google.com/spreadsheets/d/1mn8YvfzlfpOX-5KtBdaDkx10aCpxrfpsxOtotgpvWMk/edit?usp=sharing" width="100%" height="500" frameborder="0"></iframe>
-                            </div>
-                        </div>
+        <section id="looker-kepuasan-sec" class="content-section">
+            <div class="card-custom">
+                <div class="card-header">
+                    <h5><i class="bi bi-pie-chart-fill text-warning"></i> Dashboard Interaktif Grafik Kepuasan Nelayan</h5>
+                </div>
+                <div class="card-body">
+                    <div class="embed-iframe-box">
+                        <iframe src="https://lookerstudio.google.com/embed/reporting/1d1a02b5-d5fe-45b6-ac67-7950277288c4/page/page_12345" width="100%" height="560" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
-                </section>
+                </div>
+            </div>
+        </section>
 
-                <!-- 3. Looker Studio Kepuasan -->
-                <section id="datastudio-kepuasan" class="mb-5">
-                    <div class="card card-gov">
-                        <div class="card-header bg-white py-3">
-                            <h5 class="mb-0 text-dark"><i class="bi bi-bar-chart-line-fill me-2 text-success"></i> 3. Visualisasi Looker Studio Tingkat Kepuasan</h5>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="embed-container">
-                                <!-- ISI LINK EMBED LOOKER STUDIO KEPUASAN DI SINI -->
-                                <iframe src="https://datastudio.google.com/embed/reporting/1d1a02b5-d5fe-45b6-ac67-7950277288c4/page/page_12345" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+    </main>
 
-            </main>
-        </div>
-    </div>
-
-    <!-- Bootstrap 5 JS Bundle dengan Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Script otomatis tanda aktif navigasi berdasarkan scroll (Scrollspy alternatif) -->
     <script>
-        const links = document.querySelectorAll('.sidebar .nav-link');
-        const sections = document.querySelectorAll('section');
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.sidebar .nav-link');
+            const sections = document.querySelectorAll('.content-section');
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Hilangkan kelas aktif dari semua tombol menu
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    // Tambahkan kelas aktif pada menu yang diklik
+                    this.classList.add('active');
 
-            links.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
+                    // Ambil id target section
+                    const targetSectionId = this.getAttribute('data-section');
+
+                    // Sembunyikan semua konten, lalu munculkan yang sesuai pilihan
+                    sections.forEach(sec => sec.classList.remove('active-section'));
+                    const targetSection = document.getElementById(targetSectionId);
+                    if(targetSection) {
+                        targetSection.classList.add('active-section');
+                    }
+                });
             });
         });
     </script>
